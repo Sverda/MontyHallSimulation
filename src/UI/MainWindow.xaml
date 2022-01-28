@@ -29,6 +29,13 @@
             </Button>
 
         </StackPanel>
-        
+
+        <Button x:Name="showSettings" 
+                Style="{DynamicResource IconButton}" 
+                Content="{StaticResource SettingsIcon}"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Margin="10" />
+
     </Grid>
 </Window>
