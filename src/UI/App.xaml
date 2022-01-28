@@ -6,25 +6,35 @@
     <Application.Resources>
 
         <!-- Colors -->
-        <SolidColorBrush x:Key="Primary" Color="#FFA200"/>
-        <SolidColorBrush x:Key="PrimaryHover" Color="#cc722f"/>
-        <SolidColorBrush x:Key="Secondary" Color="#1f1f1f"/>
-        <SolidColorBrush x:Key="White" Color="#e6e6e6"/>
-        <SolidColorBrush x:Key="Gray" Color="#4d4d4d"/>
-        <SolidColorBrush x:Key="Black" Color="#171717"/>
-        <SolidColorBrush x:Key="Red" Color="#FF0000"/>
+        <Color x:Key="Primary">#FFA200</Color>
+        <Color x:Key="PrimaryHover">#cc722f</Color>
+        <Color x:Key="Secondary">#1f1f1f</Color>
+        <Color x:Key="White">#e6e6e6</Color>
+        <Color x:Key="Gray">#4d4d4d</Color>
+        <Color x:Key="Black">#171717</Color>
+        <Color x:Key="Red">#FF0000</Color>
+        
+        <!-- Brushes -->
+        <SolidColorBrush x:Key="Background" Color="{StaticResource Black}" />
+        <SolidColorBrush x:Key="HeaderColor" Color="{StaticResource White}" />
+        <!-- Brushes Primary Button -->
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="{StaticResource PrimaryHover}"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="Transparent"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
 
         <!-- Header -->
-        <Style TargetType="Label" x:Key="header">
-            <Setter Property="Foreground" Value="{StaticResource White}" />
+        <Style TargetType="Label" x:Key="Header">
+            <Setter Property="Foreground" Value="{StaticResource HeaderColor}" />
             <Setter Property="FontSize" Value="30" />
             <Setter Property="FontFamily" Value="Arial" />
             <Setter Property="FontWeight" Value="Bold" />
         </Style>
 
         <!-- Button Text -->
-        <Style TargetType="Label" x:Key="buttonText">
-            <Setter Property="Foreground" Value="{StaticResource White}" />
+        <Style TargetType="Label" x:Key="ButtonText">
+            <Setter Property="Foreground" Value="{StaticResource HeaderColor}" />
             <Setter Property="FontSize" Value="15" />
             <Setter Property="FontFamily" Value="Arial" />
             <Setter Property="FontWeight" Value="SemiBold" />
@@ -40,11 +50,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#cc722f"/>
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="Transparent"/>
-        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="Transparent"/>
-        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
         <Style x:Key="PrimaryButton" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -63,14 +68,14 @@
                                 SnapsToDevicePixels="true">
                             <Border.Background>
                                 <LinearGradientBrush EndPoint="1,0">
-                                    <GradientStop x:Name="gradientColor1" Color="#FFA200" Offset="0.0"/>
-                                    <GradientStop Color="#FF0000" Offset="1.2"/>
+                                    <GradientStop x:Name="gradientColor1" Color="{StaticResource Primary}" Offset="0.0"/>
+                                    <GradientStop Color="{StaticResource Red}" Offset="1.2"/>
                                 </LinearGradientBrush>
                             </Border.Background>
                             <Border.Effect>
                                 <DropShadowEffect x:Name="glowEffect"
                                                   ShadowDepth="0"
-                                                  Color="#FFA200"
+                                                  Color="{StaticResource Primary}"
                                                   Opacity="1"
                                                   BlurRadius="20"/>
                             </Border.Effect>
