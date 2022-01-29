@@ -1,12 +1,8 @@
-﻿using Application.Commands;
-using MediatR;
+﻿using MediatR;
 
 namespace Application.ViewModel
 {
-    public class MainViewModel
-        : CoreViewModel,
-        IRequestHandler<ShowSettingsCommand, Unit>,
-        IRequestHandler<ReturnToMenuCommand, Unit>
+    public class MainViewModel : CoreViewModel
     {
         private readonly MenuViewModel menuViewModel;
         private readonly SettingsViewModel settingsViewModel;
@@ -26,9 +22,10 @@ namespace Application.ViewModel
             IMediator mediator,
             IViewLocator viewLocator,
             IServiceProvider serviceProvider,
+            IUIContext uiContext,
             MenuViewModel menuViewModel,
             SettingsViewModel settingsViewModel)
-            : base(mediator, viewLocator, serviceProvider)
+            : base(mediator, viewLocator, serviceProvider, uiContext)
         {
             this.menuViewModel = menuViewModel;
             this.settingsViewModel = settingsViewModel;
@@ -38,28 +35,26 @@ namespace Application.ViewModel
                 ?? throw new Exception($"View for main view model doesn't exist {menuViewModel.GetType().FullName}");
         }
 
-        public Task<Unit> Handle(ShowSettingsCommand request, CancellationToken cancellationToken)
+        public void ChangeContentToSettings()
         {
             object? view = settingsViewModel.GetView();
             if (view is null)
             {
-                return Task.FromResult(Unit.Task.Result);
+                return;
             }
 
-            CurrentView = view;
-            return Task.FromResult(Unit.Task.Result);
+            uiContext.BeginInvoke(() => CurrentView = view);
         }
 
-        public Task<Unit> Handle(ReturnToMenuCommand request, CancellationToken cancellationToken)
+        public void ChangeContentToMenu()
         {
             object? view = menuViewModel.GetView();
             if (view is null)
             {
-                return Task.FromResult(Unit.Task.Result);
+                return;
             }
 
-            CurrentView = view;
-            return Task.FromResult(Unit.Task.Result);
+            uiContext.BeginInvoke(() => CurrentView = view);
         }
     }
 }

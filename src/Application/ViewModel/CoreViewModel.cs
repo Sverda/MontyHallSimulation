@@ -6,17 +6,20 @@ namespace Application.ViewModel
     public class CoreViewModel : ObservableObject
     {
         protected readonly IMediator mediator;
+        protected readonly IUIContext uiContext;
         private readonly IViewLocator viewLocator;
         private readonly IServiceProvider serviceProvider;
 
         public CoreViewModel(
             IMediator mediator,
             IViewLocator viewLocator,
-            IServiceProvider serviceProvider)
+            IServiceProvider serviceProvider,
+            IUIContext uiContext)
         {
             this.mediator = mediator;
             this.viewLocator = viewLocator;
             this.serviceProvider = serviceProvider;
+            this.uiContext = uiContext;
         }
 
         public object? GetView()

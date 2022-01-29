@@ -1,7 +1,5 @@
 ﻿using Application.ViewModel;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 using UI.View;
 
 namespace UI
@@ -10,13 +8,12 @@ namespace UI
     {
         public static void AddViews(this ServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
-
             services.AddSingleton<IViewLocator, ViewLocator>();
+            services.AddSingleton<IUIContext, WPFContext>();
 
-            services.AddTransient<MenuView>();
-            services.AddTransient<SettingsView>();
-            services.AddTransient<MainView>();
+            services.AddSingleton<MenuView>();
+            services.AddSingleton<SettingsView>();
+            services.AddSingleton<MainView>();
             services.AddSingleton<MainWindow>();
         }
     }

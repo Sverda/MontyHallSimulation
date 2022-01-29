@@ -7,8 +7,9 @@ namespace Application.ViewModel
         public SettingsViewModel(
             IMediator mediator,
             IViewLocator viewLocator,
-            IServiceProvider serviceProvider)
-            : base(mediator, viewLocator, serviceProvider)
+            IServiceProvider serviceProvider,
+            IUIContext uiContext)
+            : base(mediator, viewLocator, serviceProvider, uiContext)
         {
         }
     }

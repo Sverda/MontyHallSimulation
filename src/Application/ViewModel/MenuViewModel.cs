@@ -11,8 +11,9 @@ namespace Application.ViewModel
         public MenuViewModel(
             IMediator mediator,
             IViewLocator viewLocator,
-            IServiceProvider serviceProvider)
-            : base(mediator, viewLocator, serviceProvider)
+            IServiceProvider serviceProvider,
+            IUIContext uiContext)
+            : base(mediator, viewLocator, serviceProvider, uiContext)
         {
             SettingsCommand = new AsyncRelayCommand(ShowSettings);
         }

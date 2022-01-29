@@ -1,4 +1,5 @@
 ﻿using Application.ViewModel;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application
@@ -7,9 +8,11 @@ namespace Application
     {
         public static void AddApplication(this ServiceCollection services)
         {
-            services.AddTransient<MenuViewModel>();
-            services.AddTransient<SettingsViewModel>();
-            services.AddTransient<MainViewModel>();
+            services.AddMediatR(typeof(CoreViewModel));
+
+            services.AddSingleton<MenuViewModel>();
+            services.AddSingleton<SettingsViewModel>();
+            services.AddSingleton<MainViewModel>();
         }
     }
 }
