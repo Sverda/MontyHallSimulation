@@ -21,10 +21,10 @@ namespace UI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(MainView mainView)
         {
             InitializeComponent();
-            main.Content = new MainView();
+            main.Content = mainView;
         }
     }
 }

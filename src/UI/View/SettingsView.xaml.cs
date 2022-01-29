@@ -1,5 +1,4 @@
-﻿using Application.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,17 +16,13 @@ using System.Windows.Shapes;
 namespace UI.View
 {
     /// <summary>
-    /// Interaction logic for MainView.xaml
+    /// Interaction logic for SettingsView.xaml
     /// </summary>
-    public partial class MainView : UserControl
+    public partial class SettingsView : UserControl
     {
-        public MainViewModel ViewModel { get; }
-
-        public MainView(MainViewModel viewModel)
+        public SettingsView()
         {
             InitializeComponent();
-            ViewModel = viewModel;
-            DataContext = viewModel;
         }
     }
 }

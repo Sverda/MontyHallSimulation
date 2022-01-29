@@ -14,6 +14,7 @@
 
             <Label Style="{StaticResource Header}" 
                    Content="Monty Hall Simulation"
+                   HorizontalContentAlignment="Center"
                    Margin="0 0 0 50"
                    Grid.Row="0"/>
 
