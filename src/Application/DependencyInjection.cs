@@ -7,7 +7,9 @@ namespace Application
     {
         public static void AddApplication(this ServiceCollection services)
         {
-            services.AddSingleton<MainViewModel>();
+            services.AddTransient<MenuViewModel>();
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<MainViewModel>();
         }
     }
 }

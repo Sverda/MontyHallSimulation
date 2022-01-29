@@ -3,11 +3,11 @@
 namespace UI.View
 {
     /// <summary>
-    /// Interaction logic for SettingsView.xaml
+    /// Interaction logic for MenuView.xaml
     /// </summary>
-    public partial class SettingsView : UserControl
+    public partial class MenuView : UserControl
     {
-        public SettingsView()
+        public MenuView()
         {
             InitializeComponent();
         }

@@ -1,15 +1,7 @@
 ﻿using Application;
-using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 using System.Windows;
-using UI.View;
 
 namespace UI
 {
@@ -18,19 +10,21 @@ namespace UI
     /// </summary>
     public partial class App : System.Windows.Application
     {
-        private readonly ServiceProvider serviceProvider;
+        public new static App Current => (App)System.Windows.Application.Current;
+
+        public IServiceProvider Services { get; }
 
         public App()
         {
             ServiceCollection services = new();
             services.AddApplication();
-            services.AddUI();
-            serviceProvider = services.BuildServiceProvider();
+            services.AddViews();
+            Services = services.BuildServiceProvider();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            var mainWindow = serviceProvider.GetService<MainWindow>();
+            var mainWindow = Services.GetService<MainWindow>();
             mainWindow?.Show();
         }
     }
