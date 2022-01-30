@@ -10,9 +10,10 @@ namespace Application
         {
             services.AddMediatR(typeof(CoreViewModel));
 
-            services.AddSingleton<MenuViewModel>();
-            services.AddSingleton<SettingsViewModel>();
-            services.AddSingleton<InProgressViewModel>();
+            services.AddTransient<MenuViewModel>();
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<InProgressViewModel>();
+            services.AddTransient<SimulationResultViewModel>();
             services.AddSingleton<MainViewModel>();
         }
     }

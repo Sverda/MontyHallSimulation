@@ -7,8 +7,8 @@ namespace Application.ViewModel
     {
         protected readonly IMediator mediator;
         protected readonly IUIContext uiContext;
+        protected readonly IServiceProvider serviceProvider;
         private readonly IViewLocator viewLocator;
-        private readonly IServiceProvider serviceProvider;
 
         public CoreViewModel(
             IMediator mediator,

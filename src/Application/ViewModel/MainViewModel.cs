@@ -1,12 +1,10 @@
 ﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.ViewModel
 {
     public class MainViewModel : CoreViewModel
     {
-        private readonly MenuViewModel menuViewModel;
-        private readonly SettingsViewModel settingsViewModel;
-        private readonly InProgressViewModel inProgressViewModel;
         private object currentView;
 
         public object CurrentView
@@ -23,22 +21,15 @@ namespace Application.ViewModel
             IMediator mediator,
             IViewLocator viewLocator,
             IServiceProvider serviceProvider,
-            IUIContext uiContext,
-            MenuViewModel menuViewModel,
-            SettingsViewModel settingsViewModel,
-            InProgressViewModel inProgressViewModel)
+            IUIContext uiContext)
             : base(mediator, viewLocator, serviceProvider, uiContext)
         {
-            this.menuViewModel = menuViewModel;
-            this.settingsViewModel = settingsViewModel;
-            this.inProgressViewModel = inProgressViewModel;
-            object? view = menuViewModel.GetView();
-            currentView = view
-                ?? throw new Exception($"View for main view model doesn't exist {menuViewModel.GetType().FullName}");
+            ChangeContentToMenu();
         }
 
         public void ChangeContentToSettings()
         {
+            var settingsViewModel = serviceProvider.GetRequiredService<SettingsViewModel>();
             object? view = settingsViewModel.GetView();
             if (view is null)
             {
@@ -50,6 +41,7 @@ namespace Application.ViewModel
 
         public void ChangeContentToMenu()
         {
+            var menuViewModel = serviceProvider.GetRequiredService<MenuViewModel>();
             object? view = menuViewModel.GetView();
             if (view is null)
             {
@@ -61,7 +53,20 @@ namespace Application.ViewModel
 
         public void ChangeContentToInProgress()
         {
+            var inProgressViewModel = serviceProvider.GetRequiredService<InProgressViewModel>();
             object? view = inProgressViewModel.GetView();
+            if (view is null)
+            {
+                return;
+            }
+
+            uiContext.BeginInvoke(() => CurrentView = view);
+        }
+
+        public void ChangeContentToSimulationResult()
+        {
+            var simulationResultViewModel = serviceProvider.GetRequiredService<SimulationResultViewModel>();
+            object? view = simulationResultViewModel.GetView();
             if (view is null)
             {
                 return;

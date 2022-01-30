@@ -14,6 +14,7 @@ namespace UI
             services.AddSingleton<MenuView>();
             services.AddSingleton<SettingsView>();
             services.AddSingleton<InProgressView>();
+            services.AddSingleton<SimulationResultView>();
             services.AddSingleton<MainView>();
             services.AddSingleton<MainWindow>();
         }
