@@ -12,6 +12,7 @@ namespace Application
 
             services.AddSingleton<MenuViewModel>();
             services.AddSingleton<SettingsViewModel>();
+            services.AddSingleton<InProgressViewModel>();
             services.AddSingleton<MainViewModel>();
         }
     }

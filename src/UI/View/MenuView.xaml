@@ -23,6 +23,7 @@
 
             <Button x:Name="startSimulation" 
                     Style="{DynamicResource PrimaryButton}"
+                    Command="{Binding StartSimulationCommand}"
                     HorizontalAlignment="Center" 
                     Grid.Row="1">
                 <Label Content="Start Simulation" 

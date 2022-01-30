@@ -13,6 +13,7 @@ namespace UI
 
             services.AddSingleton<MenuView>();
             services.AddSingleton<SettingsView>();
+            services.AddSingleton<InProgressView>();
             services.AddSingleton<MainView>();
             services.AddSingleton<MainWindow>();
         }

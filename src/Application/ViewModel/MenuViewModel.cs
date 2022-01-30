@@ -7,6 +7,7 @@ namespace Application.ViewModel
     public class MenuViewModel : CoreViewModel
     {
         public IAsyncRelayCommand SettingsCommand { get; }
+        public IAsyncRelayCommand StartSimulationCommand { get; }
 
         public MenuViewModel(
             IMediator mediator,
@@ -16,11 +17,17 @@ namespace Application.ViewModel
             : base(mediator, viewLocator, serviceProvider, uiContext)
         {
             SettingsCommand = new AsyncRelayCommand(ShowSettings);
+            StartSimulationCommand = new AsyncRelayCommand(StartSimulation);
         }
 
         private async Task ShowSettings()
         {
             await mediator.Send(new ShowSettingsCommand());
+        }
+
+        private async Task StartSimulation()
+        {
+            await mediator.Send(new StartSimulationCommand());
         }
     }
 }

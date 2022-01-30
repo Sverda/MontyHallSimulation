@@ -6,6 +6,7 @@ namespace Application.ViewModel
     {
         private readonly MenuViewModel menuViewModel;
         private readonly SettingsViewModel settingsViewModel;
+        private readonly InProgressViewModel inProgressViewModel;
         private object currentView;
 
         public object CurrentView
@@ -24,12 +25,13 @@ namespace Application.ViewModel
             IServiceProvider serviceProvider,
             IUIContext uiContext,
             MenuViewModel menuViewModel,
-            SettingsViewModel settingsViewModel)
+            SettingsViewModel settingsViewModel,
+            InProgressViewModel inProgressViewModel)
             : base(mediator, viewLocator, serviceProvider, uiContext)
         {
             this.menuViewModel = menuViewModel;
             this.settingsViewModel = settingsViewModel;
-
+            this.inProgressViewModel = inProgressViewModel;
             object? view = menuViewModel.GetView();
             currentView = view
                 ?? throw new Exception($"View for main view model doesn't exist {menuViewModel.GetType().FullName}");
@@ -49,6 +51,17 @@ namespace Application.ViewModel
         public void ChangeContentToMenu()
         {
             object? view = menuViewModel.GetView();
+            if (view is null)
+            {
+                return;
+            }
+
+            uiContext.BeginInvoke(() => CurrentView = view);
+        }
+
+        public void ChangeContentToInProgress()
+        {
+            object? view = inProgressViewModel.GetView();
             if (view is null)
             {
                 return;
