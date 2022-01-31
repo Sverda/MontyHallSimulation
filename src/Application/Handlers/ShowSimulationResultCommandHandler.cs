@@ -29,7 +29,7 @@ namespace Application.Handlers
             var result = await simulation.Run(random, cancellationToken);
             simulationResultViewModel.WinnersWithoutChangedAnswer = result.WinsWithoutChangedAnswer;
             simulationResultViewModel.WinnersWithChangedAnswer = result.WinsWithChangedAnswer;
-            mainViewModel.ChangeContentToSimulationResult();
+            mainViewModel.ChangeContentToSimulationResult(simulationResultViewModel);
             return Unit.Value;
         }
     }

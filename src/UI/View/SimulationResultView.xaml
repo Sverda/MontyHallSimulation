@@ -28,7 +28,7 @@
                    Grid.Row="0"/>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Winners without changed answers"
+                <Label Content="Winners without changed answers:"
                        Style="{StaticResource LabelText}"
                        Margin="0 0 20 0"
                        VerticalContentAlignment="Center"/>
@@ -37,7 +37,7 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Winners with changed answers"
+                <Label Content="Winners with changed answers:"
                        Style="{StaticResource LabelText}"
                        Margin="0 0 20 0"
                        VerticalContentAlignment="Center"/>

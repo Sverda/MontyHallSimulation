@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace UI.View
@@ -38,6 +39,11 @@ namespace UI.View
         {
             Debug.Assert(action != null);
             dispatcher.BeginInvoke(action);
+        }
+
+        public void SetViewContext(object view, object context)
+        {
+            ((FrameworkElement)view).DataContext = context;
         }
     }
 }

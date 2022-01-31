@@ -63,15 +63,20 @@ namespace Application.ViewModel
             uiContext.BeginInvoke(() => CurrentView = view);
         }
 
-        public void ChangeContentToSimulationResult()
+        public void ChangeContentToSimulationResult(SimulationResultViewModel viewModel)
         {
-            var simulationResultViewModel = serviceProvider.GetRequiredService<SimulationResultViewModel>();
-            object? view = simulationResultViewModel.GetView();
+            if (viewModel is null)
+            {
+                throw new ArgumentNullException(nameof(viewModel));
+            }
+
+            object? view = viewModel?.GetView();
             if (view is null)
             {
                 return;
             }
 
+            uiContext.SetViewContext(view, viewModel);
             uiContext.BeginInvoke(() => CurrentView = view);
         }
     }

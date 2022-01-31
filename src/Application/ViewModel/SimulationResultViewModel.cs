@@ -24,8 +24,11 @@ namespace Application.ViewModel
             get => winnersWithChangedAnswer;
             set
             {
-                winnersWithChangedAnswer = value;
-                OnPropertyChanged();
+                uiContext.BeginInvoke(() =>
+                {
+                    winnersWithChangedAnswer = value;
+                    OnPropertyChanged();
+                });
             }
         }
 

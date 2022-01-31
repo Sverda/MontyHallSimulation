@@ -38,7 +38,7 @@ namespace Domain.Entities
 
         public void RevealEmptyDoor()
         {
-            var emptyDoors = doors.Where(d => d is EmptyDoorValueObject).ToArray();
+            var emptyDoors = doors.Where(d => d is EmptyDoorValueObject && d.Index != answerDoorIndex).ToArray();
             var doorToReveal = emptyDoors[random.Next(0, emptyDoors.Length)];
             revealdEmptyDoorIndex = doorToReveal.Index;
         }
