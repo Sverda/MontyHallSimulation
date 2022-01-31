@@ -6,7 +6,28 @@ namespace Application.ViewModel
 {
     public class SimulationResultViewModel : CoreViewModel
     {
+        private int winnersWithoutChangedAnswer;
+        private int winnersWithChangedAnswer;
+
         public IAsyncRelayCommand ReturnToMenuCommand { get; }
+        public int WinnersWithoutChangedAnswer
+        {
+            get => winnersWithoutChangedAnswer;
+            set
+            {
+                winnersWithoutChangedAnswer = value;
+                OnPropertyChanged();
+            }
+        }
+        public int WinnersWithChangedAnswer
+        {
+            get => winnersWithChangedAnswer;
+            set
+            {
+                winnersWithChangedAnswer = value;
+                OnPropertyChanged();
+            }
+        }
 
         public SimulationResultViewModel(
             IMediator mediator,

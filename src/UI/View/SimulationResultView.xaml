@@ -33,7 +33,7 @@
                        Margin="0 0 20 0"
                        VerticalContentAlignment="Center"/>
                 <TextBlock Style="{StaticResource ResultTextBlock}" 
-                           Text="20.5%" />
+                           Text="{Binding WinnersWithoutChangedAnswer}" />
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
@@ -42,7 +42,7 @@
                        Margin="0 0 20 0"
                        VerticalContentAlignment="Center"/>
                 <TextBlock Style="{StaticResource ResultTextBlock}" 
-                           Text="79.5%" />
+                           Text="{Binding WinnersWithChangedAnswer}" />
             </StackPanel>
 
             

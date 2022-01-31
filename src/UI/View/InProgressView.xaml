@@ -3,10 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:UI.View"
+             xmlns:local="clr-namespace:UI.View" 
+             xmlns:viewmodel="clr-namespace:Application.ViewModel;assembly=Application" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:InProgressViewModel}"
              local:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="VisibleIfTrueConverter" />
+    </UserControl.Resources>
     <Grid>
 
         <StackPanel x:Name="container" 
@@ -112,6 +117,15 @@
             </Grid>
 
         </StackPanel>
-        
+
+        <Grid VerticalAlignment="Bottom"
+              HorizontalAlignment="Center">
+            <Border Style="{StaticResource ErrorBorder}"
+                    Visibility="{Binding ShowErrorMessage, Converter={StaticResource VisibleIfTrueConverter}}">
+                <TextBlock Style="{DynamicResource ErrorTextBlock}" 
+                           Text="{Binding ErrorMessage}"/>
+            </Border>
+        </Grid>
+
     </Grid>
 </UserControl>

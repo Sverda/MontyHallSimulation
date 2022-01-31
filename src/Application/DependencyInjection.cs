@@ -9,6 +9,7 @@ namespace Application
         public static void AddApplication(this ServiceCollection services)
         {
             services.AddMediatR(typeof(CoreViewModel));
+            services.AddSingleton(typeof(Random));
 
             services.AddTransient<MenuViewModel>();
             services.AddTransient<SettingsViewModel>();

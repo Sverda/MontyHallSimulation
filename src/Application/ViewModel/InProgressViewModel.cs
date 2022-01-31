@@ -5,6 +5,28 @@ namespace Application.ViewModel
 {
     public class InProgressViewModel : CoreViewModel
     {
+        private string errorMessage;
+        private bool showErrorMessage;
+
+        public bool ShowErrorMessage
+        {
+            get => showErrorMessage;
+            set
+            {
+                showErrorMessage = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ErrorMessage
+        {
+            get => errorMessage;
+            set
+            {
+                errorMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
         public InProgressViewModel(
             IMediator mediator,
             IViewLocator viewLocator,
@@ -19,7 +41,16 @@ namespace Application.ViewModel
 
         private async Task PrepareSimulation()
         {
-            await mediator.Send(new ShowSimulationResultCommand());
+            try
+            {
+                await mediator.Send(new ShowSimulationResultCommand());
+            }
+            catch (Exception e)
+            {
+                ShowErrorMessage = true;
+                ErrorMessage = e.Message;
+                throw;
+            }
         }
     }
 }
