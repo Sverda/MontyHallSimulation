@@ -6,9 +6,9 @@ namespace Domain.Aggregates
 {
     public class SimulationScenario : Entity<int>, IAggregateRoot
     {
-        public SettingsValueObject Settings { get; }
+        public Settings Settings { get; }
 
-        public SimulationScenario(int id, SettingsValueObject settings) : base(id)
+        public SimulationScenario(int id, Settings settings) : base(id)
         {
             Settings = settings;
         }

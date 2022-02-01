@@ -1,4 +1,6 @@
-﻿using Application.ViewModel;
+﻿using Application.Repositories;
+using Application.ViewModel;
+using Domain.Entities;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +12,8 @@ namespace Application
         {
             services.AddMediatR(typeof(CoreViewModel));
             services.AddSingleton(typeof(Random));
+
+            services.AddSingleton<IRepository<Settings, int>, SettingsRepository>();
 
             services.AddTransient<MenuViewModel>();
             services.AddTransient<SettingsViewModel>();

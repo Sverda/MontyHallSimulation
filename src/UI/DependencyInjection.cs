@@ -11,12 +11,12 @@ namespace UI
             services.AddSingleton<IViewLocator, ViewLocator>();
             services.AddSingleton<IUIContext, WPFContext>();
 
-            services.AddSingleton<MenuView>();
-            services.AddSingleton<SettingsView>();
-            services.AddSingleton<InProgressView>();
-            services.AddSingleton<SimulationResultView>();
-            services.AddSingleton<MainView>();
-            services.AddSingleton<MainWindow>();
+            services.AddTransient<MenuView>();
+            services.AddTransient<SettingsView>();
+            services.AddTransient<InProgressView>();
+            services.AddTransient<SimulationResultView>();
+            services.AddTransient<MainView>();
+            services.AddTransient<MainWindow>();
         }
     }
 }
