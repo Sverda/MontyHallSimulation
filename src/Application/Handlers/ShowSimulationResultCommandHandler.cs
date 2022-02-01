@@ -29,10 +29,13 @@ namespace Application.Handlers
         public async Task<Unit> Handle(ShowSimulationResultCommand request, CancellationToken cancellationToken)
         {
             await Task.Delay(1000, cancellationToken);
-            var simulation = new SimulationScenario(0, settingsRepository.GetById(0));
+            Settings settings = settingsRepository.GetById(0);
+            var simulation = new SimulationScenario(0, settings);
             var result = await simulation.Run(random, cancellationToken);
-            simulationResultViewModel.WinnersWithoutChangedAnswer = result.WinsWithoutChangedAnswer;
-            simulationResultViewModel.WinnersWithChangedAnswer = result.WinsWithChangedAnswer;
+            simulationResultViewModel.WinnersWithoutChangedAnswer
+                = $"{Math.Floor(result.WinsWithoutChangedAnswer / (settings.Iterations / 2f) * 100)}%";
+            simulationResultViewModel.WinnersWithChangedAnswer 
+                = $"{Math.Floor(result.WinsWithChangedAnswer / (settings.Iterations / 2f) * 100)}%";
             mainViewModel.ChangeContentToSimulationResult(simulationResultViewModel);
             return Unit.Value;
         }

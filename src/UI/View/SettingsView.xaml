@@ -46,13 +46,13 @@
                        Style="{StaticResource LabelText}"
                        Margin="0 0 20 0"
                        VerticalContentAlignment="Center"/>
-                <TextBox Text="{Binding Iterations, Mode=TwoWay}"
+                <TextBox Text="{Binding Iterations, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{DynamicResource TextBox}" 
                          Width="120" Height="30" />
             </StackPanel>
             <TextBlock Text="{Binding IterationMessage}" 
-                           Visibility="{Binding IterationMessageVisibility, Converter={StaticResource VisibleIfTrueConverter}}"
-                           Foreground="{StaticResource ErrorTextBlock.Foreground}" />
+                       Visibility="{Binding IterationMessageVisibility, Converter={StaticResource VisibleIfTrueConverter}}"
+                       Foreground="{StaticResource ErrorTextBlock.Foreground}" />
 
         </StackPanel>
     </Grid>

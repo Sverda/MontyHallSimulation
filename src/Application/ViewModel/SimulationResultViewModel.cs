@@ -6,11 +6,10 @@ namespace Application.ViewModel
 {
     public class SimulationResultViewModel : CoreViewModel
     {
-        private int winnersWithoutChangedAnswer;
-        private int winnersWithChangedAnswer;
+        private string winnersWithoutChangedAnswer;
+        private string winnersWithChangedAnswer;
 
-        public IAsyncRelayCommand ReturnToMenuCommand { get; }
-        public int WinnersWithoutChangedAnswer
+        public string WinnersWithoutChangedAnswer
         {
             get => winnersWithoutChangedAnswer;
             set
@@ -19,7 +18,7 @@ namespace Application.ViewModel
                 OnPropertyChanged();
             }
         }
-        public int WinnersWithChangedAnswer
+        public string WinnersWithChangedAnswer
         {
             get => winnersWithChangedAnswer;
             set
@@ -31,6 +30,8 @@ namespace Application.ViewModel
                 });
             }
         }
+
+        public IAsyncRelayCommand ReturnToMenuCommand { get; }
 
         public SimulationResultViewModel(
             IMediator mediator,
