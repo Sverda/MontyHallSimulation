@@ -24,7 +24,7 @@ namespace Application.Handlers
 
         public async Task<Unit> Handle(ShowSimulationResultCommand request, CancellationToken cancellationToken)
         {
-            //await Task.Delay(1000, cancellationToken);
+            await Task.Delay(1000, cancellationToken);
             var simulation = new SimulationScenario(0, new SettingsValueObject("", 100));
             var result = await simulation.Run(random, cancellationToken);
             simulationResultViewModel.WinnersWithoutChangedAnswer = result.WinsWithoutChangedAnswer;
